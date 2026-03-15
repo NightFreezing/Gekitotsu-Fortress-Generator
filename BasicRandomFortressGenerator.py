@@ -33,14 +33,22 @@ def decToBase62(n):
 
 #generation
 remainingMoney = totalMoney
-coreVar = [strings[random.randint(0,61)],random.randint(0,276),random.randint(0,276),random.randint(0,359)]
-if coreVar[0]=='1':
+coreId = strings[random.randint(0,61)]
+coreX = random.randint(0,276)
+coreY = random.randint(0,276)
+coreAngle = random.randint(0,359)
+coreVar = [coreId, coreX, coreY, coreAngle]
+if coreId =='1':
     remainingMoney -= 750
 fortressInfo.append(coreVar)
 while remainingMoney > 0:
-    unitVar = [strings[random.randint(1,60)],random.randint(0,348),random.randint(0,349),random.randint(0,359)]
-    if remainingMoney >= priceMap[unitVar[0]]:
-       remainingMoney -= priceMap[unitVar[0]]
+    unitId = strings[random.randint(1,60)]
+    if remainingMoney >= priceMap[unitId]:
+       remainingMoney -= priceMap[unitId]
+       unitX = random.randint(0,348)
+       unitY = random.randint(0,349)
+       unitAngle = random.randint(0,359)
+       unitVar = [unitId, unitX, unitY, unitAngle]
        fortressInfo.append(unitVar)
 code = coreVar[0] + decToBase62(52058 + 1000 * coreVar[1] + coreVar[2] + 1000000 * coreVar[3]).zfill(5)
 for i in range(1,len(fortressInfo)):
